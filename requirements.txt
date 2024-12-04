@@ -37,8 +37,15 @@ pynewtonmath
 fontTools
 Python_ARQ
 pyrogram
-aiohttp>=2.2.5
 TgCrypto
 search_engine_parser
 secureme
 telegraph
+pymongo
+envparse
+asyncio
+motor
+dateparser
+dnspython
+hachoir
+numpy

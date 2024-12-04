@@ -23,7 +23,7 @@ from telegram import Chat, ChatMember, Update
 from telegram.error import BadRequest, Unauthorized
 from telegram.ext import CallbackContext
 
-from zeldris import (
+from violet import (
     DEL_CMDS,
     DEV_USERS,
     SUPPORT_USERS,
@@ -235,6 +235,31 @@ def dev_plus(func):
             )
 
     return is_dev_plus_func
+
+def sudo_plus(func):
+    @wraps(func)
+    def is_drag_plus_func(update, context, *args, **kwargs):
+        user = update.effective_user
+
+        if user.id in SUPPORT_USERS or DEV_USERS:
+            return func(update, context, *args, **kwargs)
+        if not user:
+            pass
+
+
+    return is_drag_plus_func
+
+def ass_plus(func):
+    @wraps(func)
+    def is_ass_plus_func(update, context, *args, **kwargs):
+        user = update.effective_user
+
+        if user.id in WHITELIST_USERS or SUPPORT_USERS or DEV_USERS:
+            return func(update, context, *args, **kwargs)
+        if not user:
+            pass
+
+    return is_ass_plus_func
 
 
 def connection_status(func):
